@@ -3,7 +3,7 @@ import os
 import numpy as np
 import streamlit as st
 import tensorflow as tf
-from PIL import Image
+from PIL import Image, ImageOps
 
 # ----------------------------
 # Page config + styling
@@ -150,7 +150,7 @@ with left:
         )
         if uploaded is not None:
             st.session_state.uploaded_file = uploaded
-            selected_img = Image.open(uploaded)
+            selected_img = ImageOps.exif_transpose(Image.open(path))
             selected_source = "Uploaded image"
 
         st.markdown('<div class="small">Tip: Use a clear photo with the dog centered and well lit.</div>', unsafe_allow_html=True)
