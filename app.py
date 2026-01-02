@@ -150,11 +150,8 @@ with left:
         )
         if uploaded is not None:
             st.session_state.uploaded_file = uploaded
-<<<<<<< HEAD
             selected_img = ImageOps.exif_transpose(Image.open(path))
-=======
             selected_img = ImageOps.exif_transpose(Image.open(uploaded))
->>>>>>> 6c579db (Fix image orientation using EXIF metadata)
             selected_source = "Uploaded image"
 
         st.markdown('<div class="small">Tip: Use a clear photo with the dog centered and well lit.</div>', unsafe_allow_html=True)
