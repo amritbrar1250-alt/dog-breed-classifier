@@ -150,7 +150,6 @@ with left:
         )
         if uploaded is not None:
             st.session_state.uploaded_file = uploaded
-            selected_img = ImageOps.exif_transpose(Image.open(path))
             selected_img = ImageOps.exif_transpose(Image.open(uploaded))
             selected_source = "Uploaded image"
 
