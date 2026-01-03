@@ -12,25 +12,65 @@ st.set_page_config(page_title="Dog Breed Classifier", layout="wide")
 
 CSS = """
 <style>
-.block-container { padding-top: 1.2rem; padding-bottom: 2rem; }
-h1, h2, h3 { letter-spacing: -0.02em; }
+/* Base spacing */
+.block-container {
+  padding-top: 1.2rem;
+  padding-bottom: 2rem;
+}
+
+/* Typography */
+h1, h2, h3 {
+  letter-spacing: -0.02em;
+}
+
+/* Cards */
 .card {
   border-radius: 16px;
   padding: 1rem 1.2rem;
   border: 1px solid rgba(120,120,120,0.25);
-  background: rgba(250,250,250,0.55);
 }
-.small { font-size: 0.92rem; color: rgba(40,40,40,0.82); }
-.muted { color: rgba(40,40,40,0.70); }
-.hr { height: 1px; background: rgba(120,120,120,0.25); margin: 1rem 0; }
+
+/* Light mode */
+@media (prefers-color-scheme: light) {
+  .card {
+    background: #ffffff;
+  }
+  .kpi {
+    background: #f5f5f5;
+    color: #111;
+  }
+  .muted { color: rgba(0,0,0,0.65); }
+  .small { color: rgba(0,0,0,0.75); }
+}
+
+/* Dark mode */
+@media (prefers-color-scheme: dark) {
+  .card {
+    background: rgba(30, 30, 30, 0.95);
+  }
+  .kpi {
+    background: rgba(45, 45, 45, 0.95);
+    color: #f0f0f0;
+  }
+  .muted { color: rgba(240,240,240,0.7); }
+  .small { color: rgba(240,240,240,0.75); }
+}
+
+/* KPI pills */
 .kpi {
   display: inline-block;
   padding: 0.4rem 0.65rem;
   border-radius: 999px;
   border: 1px solid rgba(120,120,120,0.25);
-  background: rgba(255,255,255,0.7);
   margin-right: 0.4rem;
   font-size: 0.9rem;
+}
+
+/* Divider */
+.hr {
+  height: 1px;
+  background: rgba(120,120,120,0.25);
+  margin: 1rem 0;
 }
 </style>
 """
