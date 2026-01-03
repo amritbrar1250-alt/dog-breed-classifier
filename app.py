@@ -18,26 +18,64 @@ CSS = """
   padding-bottom: 2rem;
 }
 
-/* Typography */
+/* Typography with subtle animation */
 h1, h2, h3 {
   letter-spacing: -0.02em;
+  transition: color 0.3s ease;
 }
 
-/* Cards */
+h1 {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Cards with interactive effects */
 .card {
   border-radius: 16px;
   padding: 1rem 1.2rem;
   border: 1px solid rgba(120,120,120,0.25);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  overflow: hidden;
+}
+
+.card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.1), transparent);
+  transition: left 0.5s;
+}
+
+.card:hover::before {
+  left: 100%;
 }
 
 /* Light mode */
 @media (prefers-color-scheme: light) {
   .card {
     background: #ffffff;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+  }
+  .card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px rgba(0,0,0,0.12);
+    border-color: rgba(102, 126, 234, 0.3);
   }
   .kpi {
-    background: #f5f5f5;
+    background: linear-gradient(135deg, #f5f5f5 0%, #e8e8e8 100%);
     color: #111;
+  }
+  .kpi:hover {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: #ffffff;
+    transform: scale(1.05);
+    box-shadow: 0 4px 12px rgba(102, 126, 234, 0.3);
   }
   .muted { color: rgba(0,0,0,0.65); }
   .small { color: rgba(0,0,0,0.75); }
@@ -47,16 +85,29 @@ h1, h2, h3 {
 @media (prefers-color-scheme: dark) {
   .card {
     background: rgba(30, 30, 30, 0.95);
+    box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+  }
+  .card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px rgba(0,0,0,0.4);
+    border-color: rgba(102, 126, 234, 0.4);
+    background: rgba(35, 35, 35, 0.95);
   }
   .kpi {
-    background: rgba(45, 45, 45, 0.95);
+    background: linear-gradient(135deg, rgba(45, 45, 45, 0.95) 0%, rgba(35, 35, 35, 0.95) 100%);
     color: #f0f0f0;
+  }
+  .kpi:hover {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: #ffffff;
+    transform: scale(1.05);
+    box-shadow: 0 4px 12px rgba(102, 126, 234, 0.4);
   }
   .muted { color: rgba(240,240,240,0.7); }
   .small { color: rgba(240,240,240,0.75); }
 }
 
-/* KPI pills */
+/* KPI pills with fun interactions */
 .kpi {
   display: inline-block;
   padding: 0.4rem 0.65rem;
@@ -64,13 +115,77 @@ h1, h2, h3 {
   border: 1px solid rgba(120,120,120,0.25);
   margin-right: 0.4rem;
   font-size: 0.9rem;
+  font-weight: 500;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  cursor: default;
+  position: relative;
 }
 
-/* Divider */
+/* Divider with gradient */
 .hr {
   height: 1px;
-  background: rgba(120,120,120,0.25);
+  background: linear-gradient(90deg, transparent, rgba(120,120,120,0.25), transparent);
   margin: 1rem 0;
+  border: none;
+  animation: fadeIn 0.5s ease-in;
+}
+
+/* Smooth animations */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.card {
+  animation: slideUp 0.4s ease-out;
+}
+
+/* Interactive button enhancements */
+button {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
+}
+
+button:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(102, 126, 234, 0.3) !important;
+}
+
+button:active {
+  transform: translateY(0);
+}
+
+/* Progress bar enhancements */
+[data-testid="stProgressBar"] > div {
+  border-radius: 999px !important;
+  overflow: hidden;
+  background: linear-gradient(90deg, #667eea 0%, #764ba2 100%);
+  animation: shimmer 2s infinite;
+}
+
+@keyframes shimmer {
+  0% { background-position: -1000px 0; }
+  100% { background-position: 1000px 0; }
+}
+
+/* Image preview hover effect */
+img {
+  transition: transform 0.3s ease;
+  border-radius: 8px;
+}
+
+img:hover {
+  transform: scale(1.02);
 }
 </style>
 """
