@@ -1,7 +1,7 @@
 # Dog Breed Classifier
 
 A deployed machine learning web application that predicts dog breeds from images using deep learning.  
-Built with TensorFlow and Streamlit, leveraging transfer learning on EfficientNet.
+Built with TensorFlow and Streamlit, using transfer learning on EfficientNet.
 
 ## Live Demo
 https://amritbrar1250-alt-dog-breed-classifier.streamlit.app
@@ -16,7 +16,6 @@ The model is trained using transfer learning and optimized for real-time inferen
 - Image upload and example gallery
 - Top-K breed predictions with confidence scores
 - Low-confidence detection with user guidance
-- Correct handling of phone image orientation (EXIF metadata)
 - Downloadable prediction results (JSON)
 - Clean, responsive Streamlit UI
 
